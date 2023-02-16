@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "TabbyCat",
+  "description": "Organize and describe tabs",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "black-cat.png"
+  },
+    "permissions": [
+    "tabGroups",
+    "activeTab",
+    "tabs",
+    "storage"
+  ]
+}
