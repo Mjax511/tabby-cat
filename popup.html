@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="./popup.css" />
   </head>
   <body>
-    <template id="li_template">
-      <li>
-        <a>
-          <h3 class="title">Tab Title</h3>
-          <p class="pathname">Tab Pathname</p>
-        </a>
-      </li>
-    </template>
+    <div id="wrapper">
+      <img src="header.png" id="header" />
+      <template id="li_template">
+        <li>
+          <a>
+            <h3 class="title">Tab Title</h3>
+            <p class="pathname">Tab Pathname</p>
+          </a>
+        </li>
+      </template>
 
-    <h1>Google Dev Docs</h1>
-    <button>Group Tabs</button>
-    <ul></ul>
+      <h1 style="text-align: center">
+        Tabby Cat <br />
+        a purrty tab manager
+      </h1>
+      <button>View Tabs (detail)</button>
+      <ul></ul>
 
-    <script src="./popup.js" type="module"></script>
+      <script src="./popup.js" type="module"></script>
+    </div>
   </body>
 </html>

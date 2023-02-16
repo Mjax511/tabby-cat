@@ -3,14 +3,22 @@
   "name": "TabbyCat",
   "description": "Organize and describe tabs",
   "version": "1.0",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "opentab": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      },
+      "description": "Run \"foo\" on the current page."
+    }
+  },
   "action": {
     "default_popup": "popup.html",
     "default_icon": "black-cat.png"
   },
-    "permissions": [
-    "tabGroups",
-    "activeTab",
-    "tabs",
-    "storage"
-  ]
+  "permissions": ["tabGroups", "activeTab", "tabs", "storage", "scripting"]
 }
