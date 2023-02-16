@@ -5,7 +5,7 @@ const tabs = await chrome.tabs.query({
   //   "https://github.com/*"
   // ],
   // title: "New Tab"
-	status:"unloaded"
+  status: "unloaded",
 });
 const storage = chrome.storage.local;
 storage.set({allTabs: tabs})
@@ -18,17 +18,17 @@ const elements = new Set();
 for (const tab of tabs) {
   const element = template.content.firstElementChild.cloneNode(true);
 
-  const url = JSON.stringify(tab.url)
+  const url = JSON.stringify(tab.url);
   const date = JSON.stringify(new Date());
-  const desc = tab.title;	
-  const store = {date: date, desc, desc}
-  storage.set({[url]: store}).then(()=> console.log(store, "set data"))
+  const desc = tab.title;
+  const store = { date: date, desc, desc };
+  storage.set({ [url]: store }).then(() => console.log(store, "set data"));
 
-  storage.get(url).then(res => console.log("Getting data", res[url]))
-	
+  storage.get(url).then((res) => console.log("Getting data", res[url]));
+
   const title = tab.title.split("-")[0].trim();
   const pathname = new URL(tab.url).pathname.slice("/docs".length);
-  
+
   element.querySelector(".title").textContent = title;
   element.querySelector(".pathname").textContent = pathname;
   element.querySelector("a").addEventListener("click", async () => {
@@ -42,10 +42,16 @@ for (const tab of tabs) {
 
 document.querySelector("ul").append(...elements);
 
+// const button = document.querySelector("button");
+// button.addEventListener("click", async () => {
+//   const tabIds = tabs.map(({ id }) => id);
+//   const group = await chrome.tabs.group({ tabIds });
+//   await chrome.tabGroups.update(group, { title: "DOCS" });
+// }
 
 const button = document.querySelector("button");
-button.addEventListener("click", async () => {
-  const tabIds = tabs.map(({ id }) => id);
-  const group = await chrome.tabs.group({ tabIds });
-  await chrome.tabGroups.update(group, { title: "DOCS" });
+button.addEventListener("click", function () {
+  chrome.runtime.sendMessage({ message: "popup" }, function (response) {
+    //font
+  });
 });
