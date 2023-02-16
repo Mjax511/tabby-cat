@@ -8,14 +8,7 @@ const tabs = await chrome.tabs.query({
 	status:"unloaded"
 });
 const storage = chrome.storage.local;
-const test = { key: true }
-storage.set(test).then(() => {
-  console.log("Value is set to " + test.key);
-});
-
-storage.get(["key"]).then((result) => {
-  console.log("Value currently is " + result.key);
-});
+storage.set({allTabs: tabs})
 
 const collator = new Intl.Collator();
 tabs.sort((a, b) => collator.compare(a.title, b.title));
